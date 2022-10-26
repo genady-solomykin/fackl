@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/magnific-popup.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.4/swiper-bundle.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Document</title>
+</head>
+<body>
+
+
+  <!-- <iframe src="https://www.youtube.com/embed/YwTRY6L0KP0?autoplay=1" allow='autoplay'></iframe> -->
+
+
+  <style>
+
+    html {
+      background: #000;
+      text-align: center;
+    }
+    .container {
+      width: 100%;
+    }
+
+  </style>
+
+  <div class="container">
+    <div class="popup-gallery">
+      <a href="https://images.unsplash.com/photo-1524648895410-53fcb1d98094?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d635ce56a53ed68189603030b7ee6b26&auto=format&fit=crop&w=634&q=80" class="image-custom">
+          <img src="https://images.unsplash.com/photo-1524648895410-53fcb1d98094?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=d635ce56a53ed68189603030b7ee6b26&auto=format&fit=crop&w=634&q=80" style="height: 250px;" />
+      </a>
+  
+      <a href="https://images.unsplash.com/photo-1517191434949-5e90cd67d2b6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a42146c9d68f19ef36d4a2298a7f2d3a&auto=format&fit=crop&w=675&q=80" class="image-custom">
+          <img src="https://images.unsplash.com/photo-1517191434949-5e90cd67d2b6?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=a42146c9d68f19ef36d4a2298a7f2d3a&auto=format&fit=crop&w=675&q=80" style="height: 250px;" />
+      </a>
+  
+      <a href="https://www.youtube.com/watch?v=YwTRY6L0KP0" class="video">
+          <img src="https://img.youtube.com/vi/YwTRY6L0KP0/hqdefault.jpg" style="height: 250px;" />
+      </a>
+
+      <a href="https://www.youtube.com/watch?v=b2-i2hR9S5k" class="video">
+        <img src="https://m.media-amazon.com/images/I/81emBOJxExL._SL1500_.jpg" style="height: 250px;" />
+      </a>
+      <a href="https://www.youtube.com/watch?v=ggyaWQZ6uZg" class="video">
+        <img src="https://gmedia.playstation.com/is/image/SIEPDC/uncharted-the-lost-legacy-box-art-01-ps4-us-06apr17?$native$" style="height: 250px;" />
+      </a>
+      <a href="https://images.unsplash.com/photo-1464983953574-0892a716854b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89d554d84ae613e474ba72dd34d0473a&auto=format&fit=crop&w=1350&q=80" class="image-custom">
+        <img src="https://images.unsplash.com/photo-1464983953574-0892a716854b?ixlib=rb-0.3.5&ixid=eyJhcHBfaWQiOjEyMDd9&s=89d554d84ae613e474ba72dd34d0473a&auto=format&fit=crop&w=1350&q=80" style="height: 250px;" />
+      </a>
+    </div>
+  </div>
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/magnific-popup.js/1.1.0/jquery.magnific-popup.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/8.4.4/swiper-bundle.min.js"></script>
+    <!-- <script src="script.js" async></script> -->
+    <script>
+
+$('.popup-gallery').magnificPopup({
+    		delegate: 'a',
+    		type: 'image',
+        callbacks: {
+          elementParse: function(item) {
+            if(item.el[0].className == 'video') {
+              item.type = 'iframe',
+              item.iframe = {
+                 patterns: {
+                   youtube: {
+                     index: 'youtube.com/', 
+                     id: 'v=', 
+                     src: '//www.youtube.com/embed/%id%?autoplay=1'
+                   },
+                   vimeo: {
+                     index: 'vimeo.com/',
+                     id: '/',
+                     src: '//player.vimeo.com/video/%id%?autoplay=1'
+                   },
+                   gmaps: {
+                     index: '//maps.google.',
+                     src: '%id%&output=embed'
+                   }
+                 }
+              }
+            } else {
+               item.type = 'image',
+               item.tLoading = 'Loading image #%curr%...',
+               item.mainClass = 'mfp-img-mobile',
+               item.image = {
+                 tError: '<a href="%url%">The image #%curr%</a> could not be loaded.'
+               }
+            }
+
+          }
+        },
+    		gallery: {
+    			enabled: true,
+    			navigateByImgClick: true,
+    			preload: [0,1]
+    		}
+        
+    	});
+      
+
+    </script>
+
+    
+</body>
+</html>
